@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActividadPrincipal">
+    tools:context=".MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -20,17 +20,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_actividad_principal" />
-
-    <!--
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
-        -->
+    <include layout="@layout/content_main" />
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/menu_fab"
@@ -46,22 +36,22 @@
         app:fab_labelsPosition="left">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/accion_enviar"
+            android:id="@+id/accion_play"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="?attr/colorAccent"
             app:fab_icon="@android:drawable/ic_dialog_email"
             app:fab_size="mini"
-            app:fab_title="Enviar" />
+            app:fab_title="Jugar" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/accion_recibir"
+            android:id="@+id/accion_wiki"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="?attr/colorAccent"
             app:fab_icon="@android:drawable/ic_dialog_email"
             app:fab_size="mini"
-            app:fab_title="Recibir" />
+            app:fab_title="Wiki" />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

@@ -2,4 +2,26 @@
     <string name="app_name">Wikitronica</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_actividad_wiki">Wiki</string>
+
+    <string name="txt_principal_jugar">Haz click para jugar</string>
+    <string name="txt_principal_wiki">Haz click para ir a la wiki</string>
+    <string name="txt_principal_bienvenido">¡Bienvenido!</string>
+
+    <string name="title_activity_main">Wikitronica</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+    <string name="nav_header_title">Wikitronica</string>
+    <string name="nav_header_subtitle">Mecatronica</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="txt_menu_play">Interactivo</string>
+    <string name="txt_menu_wiki">Wiki</string>
+    <string name="title_activity_actividad_preguntas">ActividadPreguntas</string>
+
+
+    <string name="txt_game_accept">Confirmar</string>
+
+
 </resources>
