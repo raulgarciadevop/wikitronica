@@ -36,42 +36,82 @@ public class ActividadPreguntas extends Activity {
         rb3=findViewById(R.id.rb3);
         imgDisp=findViewById(R.id.imgDisplay);
 
-        comenzar();
+        comenzar(0);
+
+
 
 
         btnConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(juego.revisarRes(1))
-                    juego.addPunto();
 
-                rellenarInterfaz();
+                if (juego.isNotFinished()){
+                    if(juego.revisarRes(act.getCorrecta()))
+                        juego.addPunto();
+                    rellenarInterfaz();
+
+                }else
+                    finalizar();
+
             }
         });
+
+        txtTiempo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!juego.isNotFinished())
+                    comenzar(1);
+            }
+        });
+
+
 
     }
 
     private void rellenarInterfaz(){
-        txtPuntaje.setText(juego.getPuntaje()+"");
-
+        sDefaults();
         act=juego.getPregActual();
-
-        //Rellenar las opciones
-        rb1.setText(act.getRespuesta(0));
-        rb2.setText(act.getRespuesta(1));
-        rb3.setText(act.getRespuesta(2));
-
-        //imgDisp.setImageResource(R.drawable.ic_menu_camera); //check how to change this
+        imgDisp.setImageResource(R.drawable.ic_menu_gallery); //check how to change this
     }
 
-    private void comenzar(){
-        act=juego.iniciar();
+    private void sDefaults(){
+        txtPuntaje.setText("Puntaje: "+juego.getPuntaje());
+        txtPregunta.setText("Pregunta: "+juego.getActual()+"/10");
         //Rellenar las opciones
         rb1.setText(act.getRespuesta(0));
         rb2.setText(act.getRespuesta(1));
         rb3.setText(act.getRespuesta(2));
+    }
+
+    private void comenzar(int o){
+
+        rb1.setVisibility(View.VISIBLE);
+        rb2.setVisibility(View.VISIBLE);
+        rb3.setVisibility(View.VISIBLE);
+        txtTiempo.setText("00:00");
+        btnConfirmar.setText("Confirmar");
+
+        if(o==0)
+            act=juego.iniciar();
+        else
+            act=juego.iniciar(1);
+
+        sDefaults();
 
         imgDisp.setImageResource(R.drawable.ic_menu_camera); //check how to change this
+
+    }
+
+    private void finalizar(){
+        rb1.setVisibility(View.INVISIBLE);
+        rb2.setVisibility(View.INVISIBLE);
+        rb3.setVisibility(View.INVISIBLE);
+        txtTiempo.setText("Reiniciar");
+        btnConfirmar.setText("Salir");
+        txtPuntaje.setText("Puntaje final: "+juego.getPuntaje());
+
+        //Poner una imagen de juego terminado.
+
 
     }
 

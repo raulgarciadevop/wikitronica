@@ -24,16 +24,27 @@ public class Juego {
 
 
     public Juego() {
-        preguntas=new Pregunta[10];
-        setPreguntas();
-        puntaje=0;
-        actual=0;
+        setDefaults();
     }
 
     public Pregunta iniciar(){
         int a=actual;
         actual++;
         return preguntas[a];
+    }
+
+    public Pregunta iniciar(int o){
+        setDefaults();
+        int a=actual;
+        actual++;
+        return preguntas[a];
+    }
+
+    private void setDefaults(){
+        preguntas=new Pregunta[10];
+        setPreguntas();
+        puntaje=0;
+        actual=0;
     }
 
     public Pregunta[] getPreguntas(){
@@ -50,6 +61,14 @@ public class Juego {
 
     public int getPuntaje(){
         return puntaje;
+    }
+
+    public int getActual(){
+        return actual;
+    }
+
+    public boolean isNotFinished(){
+        return actual<9;
     }
 
     public Pregunta getPregActual(){
