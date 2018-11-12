@@ -52,16 +52,16 @@ public class ActividadPreguntas extends Activity {
     }
 
     private void rellenarInterfaz(){
-        txtPuntaje.setText(juego.getPuntaje());
+        txtPuntaje.setText(juego.getPuntaje()+"");
 
         act=juego.getPregActual();
 
         //Rellenar las opciones
         rb1.setText(act.getRespuesta(0));
         rb2.setText(act.getRespuesta(1));
-        rb2.setText(act.getRespuesta(2));
+        rb3.setText(act.getRespuesta(2));
 
-        imgDisp.setImageResource(R.drawable.ic_menu_camera); //check how to change this
+        //imgDisp.setImageResource(R.drawable.ic_menu_camera); //check how to change this
     }
 
     private void comenzar(){
@@ -69,7 +69,7 @@ public class ActividadPreguntas extends Activity {
         //Rellenar las opciones
         rb1.setText(act.getRespuesta(0));
         rb2.setText(act.getRespuesta(1));
-        rb2.setText(act.getRespuesta(2));
+        rb3.setText(act.getRespuesta(2));
 
         imgDisp.setImageResource(R.drawable.ic_menu_camera); //check how to change this
 

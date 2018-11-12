@@ -53,12 +53,13 @@ public class Juego {
     }
 
     public Pregunta getPregActual(){
-        if(actual<=9){
+        if(actual<9){
             actual++;
             return preguntas[actual];
         }
         else
-            return null;
+            return new Pregunta("asd","","","",0);
+
     }
 
 }
