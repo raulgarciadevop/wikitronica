@@ -2,6 +2,7 @@ package com.wikitronica.programacionjavaapp;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -66,6 +67,7 @@ public class ActividadPreguntas extends Activity {
 
 
 
+
     }
 
     private void rellenarInterfaz(){
@@ -114,6 +116,25 @@ public class ActividadPreguntas extends Activity {
 
 
     }
+
+    private void contar(){
+        new CountDownTimer(30000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                txtTiempo.setText(""+millisUntilFinished/1000);
+                //mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
+                //here you can have your logic to set text to edittext
+            }
+
+            public void onFinish() {
+                //mTextField.setText("done!");
+
+            }
+
+        }.start();
+    }
+
+
 
 
 

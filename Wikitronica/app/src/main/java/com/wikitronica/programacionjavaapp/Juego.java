@@ -81,4 +81,13 @@ public class Juego {
 
     }
 
+    public void finalizar(int a){
+        switch (a){
+            case 2:
+                int ultimaP=actual;
+                int puntajeF=puntaje;
+                break;
+        }
+    }
+
 }
