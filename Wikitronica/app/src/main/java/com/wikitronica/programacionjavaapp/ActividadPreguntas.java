@@ -9,15 +9,18 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ActividadPreguntas extends Activity {
-    Button btnConfirmar;
+    Button btnConfirmar,btnSalir;
     TextView txtTiempo, txtPuntaje, txtPregunta;
     Juego juego;
     RadioButton rb1,rb2,rb3;
     RadioGroup rgroup;
     ImageView imgDisp;
     Pregunta act;
+    int respActual;
+    private CountDownTimer cdt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,7 @@ public class ActividadPreguntas extends Activity {
         //getActionBar().setDisplayHomeAsUpEnabled(true);
 
         juego=new Juego();
+        Toast.makeText(getApplicationContext(), "Int: "+juego.getPreguntas().length,Toast.LENGTH_SHORT).show();
 
         btnConfirmar=findViewById(R.id.btnContinuar);
         txtTiempo=findViewById(R.id.txtTiempo);
@@ -36,18 +40,40 @@ public class ActividadPreguntas extends Activity {
         rb2=findViewById(R.id.rb2);
         rb3=findViewById(R.id.rb3);
         imgDisp=findViewById(R.id.imgDisplay);
+        btnSalir=findViewById(R.id.btnSalir);
+
+        btnSalir.setVisibility(View.INVISIBLE);
+
+
+
+        cdt=new CountDownTimer(30000,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                txtTiempo.setText("Tiempo: "+millisUntilFinished/1000);
+            }
+
+            @Override
+            public void onFinish() {
+                if(juego.isNotFinished()){
+                    txtTiempo.setText("Tiempo agotado");
+                    rellenarInterfaz();
+                }else {
+                    finalizar();
+                }
+
+            }
+        };
+
 
         comenzar(0);
-
-
 
 
         btnConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (juego.isNotFinished()){
-                    if(juego.revisarRes(act.getCorrecta()))
+                    checkId();
+                    if(juego.revisarRes(respActual))
                         juego.addPunto();
                     rellenarInterfaz();
 
@@ -66,19 +92,47 @@ public class ActividadPreguntas extends Activity {
         });
 
 
+        btnSalir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
+
+    }
+
+    private void checkId(){
+        if(rgroup.getCheckedRadioButtonId()==R.id.rb1){
+            respActual=1;
+        }else if(rgroup.getCheckedRadioButtonId()==R.id.rb2){
+            respActual=2;
+        }else if(rgroup.getCheckedRadioButtonId()==R.id.rb3){
+            respActual=3;
+        }
     }
 
     private void rellenarInterfaz(){
         sDefaults();
         act=juego.getPregActual();
+        //if (act==null)
+        cdt.cancel();
+        cdt.start();
+
         imgDisp.setImageResource(R.drawable.ic_menu_gallery); //check how to change this
     }
 
     private void sDefaults(){
         txtPuntaje.setText("Puntaje: "+juego.getPuntaje());
-        txtPregunta.setText("Pregunta: "+juego.getActual()+"/10");
+        setImagen();
+
+        if(juego.getActual()==14){
+            txtPregunta.setText("Pregunta: "+(juego.getActual()+1)+"/"+juego.getPreguntas().length);
+        }else
+            txtPregunta.setText("Pregunta: "+juego.getActual()+"/"+juego.getPreguntas().length);
+
+        rgroup.clearCheck();
         //Rellenar las opciones
         rb1.setText(act.getRespuesta(0));
         rb2.setText(act.getRespuesta(1));
@@ -91,7 +145,11 @@ public class ActividadPreguntas extends Activity {
         rb2.setVisibility(View.VISIBLE);
         rb3.setVisibility(View.VISIBLE);
         txtTiempo.setText("00:00");
+        btnSalir.setVisibility(View.GONE);
+        btnConfirmar.setVisibility(View.VISIBLE);
         btnConfirmar.setText("Confirmar");
+        cdt.cancel();
+        cdt.start();
 
         if(o==0)
             act=juego.iniciar();
@@ -105,6 +163,7 @@ public class ActividadPreguntas extends Activity {
     }
 
     private void finalizar(){
+        cdt.cancel();
         rb1.setVisibility(View.INVISIBLE);
         rb2.setVisibility(View.INVISIBLE);
         rb3.setVisibility(View.INVISIBLE);
@@ -112,26 +171,66 @@ public class ActividadPreguntas extends Activity {
         btnConfirmar.setText("Salir");
         txtPuntaje.setText("Puntaje final: "+juego.getPuntaje());
 
+
+        btnSalir.setVisibility(View.VISIBLE);
+        btnConfirmar.setVisibility(View.GONE);
+
+
+
         //Poner una imagen de juego terminado.
 
 
     }
 
-    private void contar(){
-        new CountDownTimer(30000, 1000) {
+    private void setImagen(){
+        switch (juego.getActual()){
+            case 0:
+                imgDisp.setImageResource(R.mipmap.ic_led);
+                break;
+            case 1:
+                imgDisp.setImageResource(R.mipmap.ic_dos_capacitor);
+                break;
+            case 2:
 
-            public void onTick(long millisUntilFinished) {
-                txtTiempo.setText(""+millisUntilFinished/1000);
-                //mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
-                //here you can have your logic to set text to edittext
-            }
+                break;
+            case 3:
 
-            public void onFinish() {
-                //mTextField.setText("done!");
+                break;
+            case 4:
 
-            }
+                break;
+            case 5:
 
-        }.start();
+                break;
+            case 6:
+
+                break;
+            case 7:
+
+                break;
+            case 8:
+
+                break;
+            case 9:
+
+                break;
+            case 10:
+
+                break;
+            case 11:
+
+                break;
+            case 12:
+
+                break;
+            case 13:
+
+                break;
+            case 14:
+
+                break;
+        }
+
     }
 
 
