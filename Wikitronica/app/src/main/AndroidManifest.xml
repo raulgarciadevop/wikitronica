@@ -12,11 +12,11 @@
         <activity
             android:name=".ActividadWiki"
             android:label="@string/title_activity_actividad_wiki"
-            android:parentActivityName=".ActividadPrincipal"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.wikitronica.programacionjavaapp.ActividadPrincipal" />
+                android:value="com.wikitronica.programacionjavaapp.MainActivity" />
         </activity>
         <activity
             android:name=".MainActivity"

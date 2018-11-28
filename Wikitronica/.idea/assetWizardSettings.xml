@@ -47,15 +47,47 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="backgroundLayerName" value="ic_dos_capacitor_background" />
-                                      <entry key="foregroundImage" value="E:\Users\FELICIANO\Desktop\res\2Capacitor.PNG" />
-                                      <entry key="foregroundLayerName" value="ic_dos_capacitor" />
-                                      <entry key="outputName" value="dos_capacitor" />
+                                      <entry key="backgroundLayerName" value="diodo_zener_background" />
+                                      <entry key="foregroundImage" value="E:\Users\FELICIANO\Desktop\res\3DiodoZener.PNG" />
+                                      <entry key="foregroundLayerName" value="ic_diodo_zenerlbl" />
+                                      <entry key="outputName" value="ic_diodo_zener" />
                                     </map>
                                   </option>
                                 </PersistentState>
                               </value>
                             </entry>
+                            <entry key="launcherLegacy">
+                              <value>
+                                <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="clipartAsset">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="url" value="jar:file:/C:/Android/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_assignment_turned_in_black_24dp.xml" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="imageAsset" value="E:\Users\FELICIANO\Desktop\res\resim\quince.PNG" />
+                                      <entry key="outputName" value="juego_terminado" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                        <option name="values">
+                          <map>
+                            <entry key="outputIconType" value="LAUNCHER_LEGACY" />
                           </map>
                         </option>
                       </PersistentState>
