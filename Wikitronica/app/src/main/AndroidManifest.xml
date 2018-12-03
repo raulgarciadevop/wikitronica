@@ -36,6 +36,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.wikitronica.programacionjavaapp.MainActivity" />
         </activity>
+        <activity
+            android:name=".SplashWiki"
+            android:label="@string/title_activity_splash_wiki"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.wikitronica.programacionjavaapp.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

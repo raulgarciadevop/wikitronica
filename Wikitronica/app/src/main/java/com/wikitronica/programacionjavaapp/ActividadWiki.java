@@ -25,6 +25,7 @@ public class ActividadWiki extends AppCompatActivity {
     private Wiki wiki;
     private static final int[] IMAGES={R.mipmap.uno_led,R.mipmap.dos_capacitor,R.mipmap.tres_diodozener,R.mipmap.cuatro_diodo,R.mipmap.cinco_mosfet,R.mipmap.seis_transistor,R.mipmap.ocho_resistencia,R.mipmap.nueve_sensordetemperatura,R.mipmap.diez_dipswitch,R.mipmap.once_bobina,R.mipmap.doce_buzzer,R.mipmap.trece_multimetro,R.mipmap.catorce_servomotor,R.mipmap.quince_motor};
     private int mPosition=-1;
+    String val;
 
 
     @Override
@@ -42,7 +43,16 @@ public class ActividadWiki extends AppCompatActivity {
         wiki=new Wiki();
 
 
-        mPosition=0;
+        val=getIntent().getExtras().getString("pagina");
+        int vv=Integer.parseInt(val);
+
+        if(vv>-1){
+            mPosition=vv;
+            wiki.setActual(vv);
+        }else
+            mPosition=0;
+
+
         rellenarInterfaz();
 
 

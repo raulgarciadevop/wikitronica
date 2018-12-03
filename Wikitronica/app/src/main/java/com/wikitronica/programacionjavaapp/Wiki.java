@@ -49,6 +49,10 @@ public class Wiki {
         return actual;
     }
 
+    public void setActual(int act){
+        this.actual=act;
+    }
+
     public WikiPage getPagina(int ac){
         return paginas[ac];
     }

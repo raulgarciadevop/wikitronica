@@ -1,12 +1,17 @@
 package com.wikitronica.programacionjavaapp;
 
-
-
 public class Juego {
     private int puntaje;
     //private Pregunta actual;
     private int actual;
     private Pregunta[] preguntas;
+
+    public Juego() {
+        this.actual=0;
+        this.puntaje=0;
+        preguntas=new Pregunta[15];
+        setPreguntas();
+    }
 
     //Aqui se pueden ingresar las preguntas
     private void setPreguntas(){
@@ -32,10 +37,51 @@ public class Juego {
 
     }
 
-
-    public Juego() {
-        setDefaults();
+    public void siguiente(){
+        if(actual<preguntas.length-1)
+            actual++;
     }
+
+    public int getActual(){
+        return actual;
+    }
+
+    public Pregunta getPregunta(int ind){
+        return preguntas[ind];
+    }
+
+    public Pregunta getPreguntaActual(){
+        return preguntas[actual];
+    }
+
+    public void addPunto(){
+        puntaje++;
+    }
+
+    public int getPuntaje(){
+        return puntaje;
+    }
+
+    public void reiniciar(){
+        this.puntaje=0;
+        this.actual=0;
+    }
+
+    public boolean revisarRes(int res){
+        return preguntas[actual].getCorrecta()==res;
+    }
+
+    public void revisarResp(int ress){
+        if(preguntas[actual].getCorrecta()==ress)
+            addPunto();
+    }
+
+    public int getTam(){
+        return preguntas.length;
+    }
+
+
+    /*
 
     public Pregunta iniciar(){
         int a=actual;
@@ -73,9 +119,7 @@ public class Juego {
         return puntaje;
     }
 
-    public int getActual(){
-        return actual;
-    }
+
 
     public boolean isNotFinished(){
         return actual<preguntas.length;
@@ -103,5 +147,7 @@ public class Juego {
                 break;
         }
     }
+
+    */
 
 }

@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 //Snackbar.make(view, "Modo recibir", Snackbar.LENGTH_LONG).show();
-                a=new Intent(getApplicationContext(),ActividadWiki.class);
+                a=new Intent(getApplicationContext(),SplashWiki.class);
                 startActivity(a);
             }
         });
@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity
             a=new Intent(getApplicationContext(),ActividadPreguntas.class);
             startActivity(a);
         } else if (id == R.id.nav_wiki) {
-            a=new Intent(getApplicationContext(),ActividadWiki.class);
+            a=new Intent(getApplicationContext(),SplashWiki.class);
             startActivity(a);
         }
 

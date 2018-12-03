@@ -24,8 +24,8 @@ public class ActividadPreguntas extends Activity {
     Pregunta act;
     int respActual;
     private CountDownTimer cdt;
-    private ImageSwitcher switcher;
-    private static final int[] IMAGES={R.mipmap.uno_led,R.mipmap.dos_capacitor,R.mipmap.tres_diodozener,R.mipmap.cuatro_diodo,R.mipmap.cinco_mosfet,R.mipmap.seis_transistor,R.mipmap.ic_launcher,R.mipmap.ocho_resistencia,R.mipmap.nueve_sensordetemperatura,R.mipmap.diez_dipswitch,R.mipmap.once_bobina,R.mipmap.doce_buzzer,R.mipmap.trece_multimetro,R.mipmap.catorce_servomotor,R.mipmap.quince_motor};
+    private ImageSwitcher switcher;                                                                                                                                        //AQUI DEBERIA IR EL SIETE
+    private static final int[] IMAGES={R.mipmap.uno_led,R.mipmap.dos_capacitor,R.mipmap.tres_diodozener,R.mipmap.cuatro_diodo,R.mipmap.cinco_mosfet,R.mipmap.seis_transistor,  R.mipmap.ic_launcher, R.mipmap.ocho_resistencia,R.mipmap.nueve_sensordetemperatura,R.mipmap.diez_dipswitch,R.mipmap.once_bobina,R.mipmap.doce_buzzer,R.mipmap.trece_multimetro,R.mipmap.catorce_servomotor,R.mipmap.quince_motor};
     private int mPosition=-1;
 
     @Override
@@ -35,12 +35,8 @@ public class ActividadPreguntas extends Activity {
         //getActionBar().setDisplayHomeAsUpEnabled(true);
         switcher=findViewById(R.id.imgSwitcher);
 
-
-
-
-
         juego=new Juego();
-        Toast.makeText(getApplicationContext(), "Int: "+juego.getPreguntas().length,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), "Int: "+juego.getPreguntas().length,Toast.LENGTH_SHORT).show();
 
         btnConfirmar=findViewById(R.id.btnContinuar);
         txtTiempo=findViewById(R.id.txtTiempo);
@@ -52,8 +48,9 @@ public class ActividadPreguntas extends Activity {
         rb3=findViewById(R.id.rb3);
         imgDisp=findViewById(R.id.imgDisplay);
         btnSalir=findViewById(R.id.btnSalir);
-
         btnSalir.setVisibility(View.INVISIBLE);
+
+        mPosition=0;
 
 
         switcher.setFactory(new ViewSwitcher.ViewFactory() {
@@ -75,31 +72,31 @@ public class ActividadPreguntas extends Activity {
 
             @Override
             public void onFinish() {
-                if(juego.isNotFinished()){
-                    txtTiempo.setText("Tiempo agotado");
-                    rellenarInterfaz();
-                }else {
+                if (juego.getActual()<juego.getTam()-1){
+                    checkId();
+                    juego.revisarResp(respActual);
+                    siguiente();
+                }else
                     finalizar();
-                }
-
             }
         };
-
-
-        comenzar(0);
+        iniciar();
 
 
         btnConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (juego.isNotFinished()){
+                if(juego.getActual()<juego.getTam()-1){
                     checkId();
-                    if(juego.revisarRes(respActual))
-                        juego.addPunto();
-                    rellenarInterfaz();
-
+                    juego.revisarResp(respActual);
+                    siguiente();
+                }else if(juego.getActual()==juego.getTam()-1){
+                    checkId();
+                    juego.revisarResp(respActual);
+                    finalizar();
                 }else
                     finalizar();
+
 
             }
         });
@@ -107,8 +104,8 @@ public class ActividadPreguntas extends Activity {
         txtTiempo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!juego.isNotFinished())
-                    comenzar(1);
+                if(juego.getActual()>=juego.getTam()-1)
+                    iniciar();
             }
         });
 
@@ -132,7 +129,63 @@ public class ActividadPreguntas extends Activity {
         }else if(rgroup.getCheckedRadioButtonId()==R.id.rb3){
             respActual=3;
         }
+        else
+            respActual=4;
     }
+
+    private void rellenarInterfaz(){
+        txtPuntaje.setText("Puntaje: "+juego.getPuntaje());
+        txtPregunta.setText("Pregunta: "+(juego.getActual()+1)+"/"+juego.getTam());
+        rgroup.clearCheck();
+        rb1.setText(juego.getPreguntaActual().getRespuesta(0));
+        rb2.setText(juego.getPreguntaActual().getRespuesta(1));
+        rb3.setText(juego.getPreguntaActual().getRespuesta(2));
+    }
+
+    private void siguiente(){
+        cdt.cancel();
+        juego.siguiente();
+        mPosition++;
+        switcher.setBackgroundResource(IMAGES[mPosition]);
+        rellenarInterfaz();
+        cdt.start();
+    }
+
+    private void iniciar(){
+        rb1.setVisibility(View.VISIBLE);
+        rb2.setVisibility(View.VISIBLE);
+        rb3.setVisibility(View.VISIBLE);
+        txtTiempo.setText("00:00");
+        btnSalir.setVisibility(View.GONE);
+        btnConfirmar.setVisibility(View.VISIBLE);
+        btnConfirmar.setText("Confirmar");
+        cdt.cancel();
+        cdt.start();
+
+        mPosition=0;
+        juego.reiniciar();
+        rellenarInterfaz();
+        switcher.setBackgroundResource(IMAGES[mPosition]);
+    }
+
+    private void finalizar(){
+        cdt.cancel();
+        rb1.setVisibility(View.INVISIBLE);
+        rb2.setVisibility(View.INVISIBLE);
+        rb3.setVisibility(View.INVISIBLE);
+        txtTiempo.setText("Reiniciar");
+        btnConfirmar.setText("Salir");
+        txtPuntaje.setText("Puntaje final: "+juego.getPuntaje());
+        switcher.setBackgroundResource(R.mipmap.juego_terminado);
+
+
+        btnSalir.setVisibility(View.VISIBLE);
+        btnConfirmar.setVisibility(View.GONE);
+    }
+
+
+
+    /*
 
     private void rellenarInterfaz(){
         //setImagen();
@@ -207,60 +260,6 @@ public class ActividadPreguntas extends Activity {
 
         //Poner una imagen de juego terminado.
 
-
-    }
-
-
-
-
-    /*
-    private void setImagen(){
-        switch (juego.getActual()){
-            case 0:
-                imgDisp.setImageResource(R.mipmap.uno_led);
-                //imgDisp.setImageResource(R.mipmap.ic_led);
-                break;
-            case 1:
-                imgDisp.setImageResource(R.mipmap.dos_capacitor);
-                //imgDisp.setImageResource(R.mipmap.ic_dos_capacitor);
-                break;
-            case 2:
-                imgDisp.setImageResource(R.mipmap.tres_diodozener);
-                break;
-            case 3:
-                imgDisp.setImageResource(R.mipmap.cuatro_diodo);
-                break;
-            case 4:
-                imgDisp.setImageResource(R.mipmap.cinco_mosfet);
-                break;
-            case 5:
-                imgDisp.setImageResource(R.mipmap.seis_transistor);
-                break;
-            case 6:
-                imgDisp.setImageResource(R.mipmap.ocho_resistencia);
-                break;
-            case 7:
-                imgDisp.setImageResource(R.mipmap.nueve_sensordetemperatura);
-                break;
-            case 8:
-                imgDisp.setImageResource(R.mipmap.diez_dipswitch);
-                break;
-            case 9:
-                imgDisp.setImageResource(R.mipmap.once_bobina);
-                break;
-            case 10:
-                imgDisp.setImageResource(R.mipmap.doce_buzzer);
-                break;
-            case 11:
-                imgDisp.setImageResource(R.mipmap.trece_multimetro);
-                break;
-            case 12:
-                imgDisp.setImageResource(R.mipmap.catorce_servomotor);
-                break;
-            case 13:
-                imgDisp.setImageResource(R.mipmap.quince_motor);
-                break;
-        }
 
     }
 
