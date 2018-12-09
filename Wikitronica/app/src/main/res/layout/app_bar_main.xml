@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="?attr/colorAccent"
-            app:fab_icon="@android:drawable/ic_dialog_email"
+            app:fab_icon="@drawable/ic_menu_play"
             app:fab_size="mini"
             app:fab_title="Jugar" />
 
@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="?attr/colorAccent"
-            app:fab_icon="@android:drawable/ic_dialog_email"
+            app:fab_icon="@drawable/ic_search_wiki"
             app:fab_size="mini"
             app:fab_title="Wiki" />
 

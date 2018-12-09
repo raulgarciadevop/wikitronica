@@ -46,45 +46,140 @@ public class SplashWiki extends AppCompatActivity {
                     case "Led":
                         vv=0;
                         break;
-                    case "Capacitor":
+                    case "Fuente de Poder":
                         vv=1;
                         break;
-                    case "Diodo Zener":
+                    case "Cautin":
                         vv=2;
                         break;
-                    case "Diodo":
+                    case "Relevador":
                         vv=3;
                         break;
-                    case "Mosfet":
+                    case "Arduino Nano":
                         vv=4;
                         break;
-                    case "Transistor":
+                    case "Arduino Uno":
                         vv=5;
                         break;
-                    case "Resistencia":
+                    case "Arduino Mega":
                         vv=6;
                         break;
-                    case "Sensor de temperatura":
+                    case "Protoboard":
                         vv=7;
                         break;
-                    case "Dip Switch":
+                    case "Resistencias":
                         vv=8;
                         break;
-                    case "Bobina":
+                    case "Circuito Impreso":
                         vv=9;
                         break;
-                    case "Buzzer":
+                    case "Integrado 555":
                         vv=10;
                         break;
-                    case "Multimetro":
+                    case "Integrado lm741":
                         vv=11;
                         break;
-                    case "Servomotor":
+                    case "Compuerta OR":
                         vv=12;
                         break;
-                    case "Motor":
+                    case "Compuerta NOR":
                         vv=13;
                         break;
+
+                        //lel
+
+                    case "Compuerta AND":
+                        vv=14;
+                        break;
+                    case "Compuerta NAND":
+                        vv=15;
+                        break;
+                    case "Compuerta NOT":
+                        vv=16;
+                        break;
+                    case "Compuerta XOR":
+                        vv=17;
+                        break;
+                    case "Compuerta XNOR":
+                        vv=18;
+                        break;
+                    case "Osciloscopio":
+                        vv=19;
+                        break;
+                    case "Estaño":
+                        vv=20;
+                        break;
+                    case "Tip 31":
+                        vv=21;
+                        break;
+                    case "Tip 32":
+                        vv=22;
+                        break;
+                    case "BJT":
+                        vv=23;
+                        break;
+                    case "PLC":
+                        vv=24;
+                        break;
+                    case "Display 7 Segmentos":
+                        vv=25;
+                        break;
+                    case "Cables Dupont":
+                        vv=26;
+                        break;
+                    case "Cable UTP":
+                        vv=27;
+                        break;
+
+                    //lel
+
+                    case "Octoacopladores":
+                        vv=28;
+                        break;
+                    case "Sensor de Humedad":
+                        vv=29;
+                        break;
+                    case "Sensor de A proximidad":
+                        vv=30;
+                        break;
+                    case "Sensor de Humo":
+                        vv=31;
+                        break;
+                    case "Sensor Infrarrojo":
+                        vv=32;
+                        break;
+                    case "Sensor de Calor":
+                        vv=33;
+                        break;
+                    case "Giroscopio":
+                        vv=34;
+                        break;
+                    case "Módulo Bluetooth":
+                        vv=35;
+                        break;
+                    case "Sensor de Colores":
+                        vv=36;
+                        break;
+                    case "Diodo":
+                        vv=37;
+                        break;
+                    case "Diodo zener":
+                        vv=38;
+                        break;
+                    case "Bobina":
+                        vv=39;
+                        break;
+                    case "Microcontrolador":
+                        vv=40;
+                        break;
+                    case "Foco":
+                        vv=41;
+                        break;
+                    case "Potenciómetro":
+                        vv=42;
+                        break;
+
+
 
                         default:
                             Toast.makeText(getApplicationContext(),"Error: seleccione un valor valido de la lista de autocompletado.",Toast.LENGTH_SHORT).show();
@@ -98,7 +193,49 @@ public class SplashWiki extends AppCompatActivity {
             }
         });
 
-        String[] textos={"Led","Capacitor","Diodo Zener", "Diodo", "Mosfet", "Transistor", "Resistencia", "Sensor de temperatura", "Dip Switch", "Bobina", "Buzzer", "Multimetro", "Servomotor", "Motor"};
+        String[] textos={"Led",
+                "Fuente de Poder",
+                "Cautin",
+                "Relevador",
+                "Arduino Nano",
+                "Arduino Uno",
+                "Arduino Mega",
+                "Protoboard",
+                "Resistencias",
+                "Circuito Impreso",
+                "Integrado 555",
+                "Integrado lm741",
+                "Compuerta OR",
+                "Compuerta NOR",
+                "Compuerta AND",
+                "Compuerta NAND",
+                "Compuerta NOT",
+                "Compuerta XOR",
+                "Compuerta XNOR",
+                "Osciloscopio",
+                "Estaño",
+                "Tip 31",
+                "Tip 32",
+                "BJT",
+                "PLC",
+                "Display 7 Segmentos",
+                "Cables Dupont",
+                "Cable UTP",
+                "Octoacopladores",
+                "Sensor de Humedad",
+                "Sensor de A proximidad",
+                "Sensor de Humo",
+                "Sensor Infrarrojo",
+                "Sensor de Calor",
+                "Giroscopio",
+                "Módulo Bluetooth",
+                "Sensor de Colores",
+                "Diodo",
+                "Diodo zener",
+                "Bobina",
+                "Microcontrolador",
+                "Foco",
+                "Potenciómetro"};
 
         ArrayAdapter<String> adapter= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,textos);
         actvBuscar.setAdapter(adapter);

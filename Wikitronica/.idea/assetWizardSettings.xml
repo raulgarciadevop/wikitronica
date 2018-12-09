@@ -76,8 +76,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="imageAsset" value="E:\Users\FELICIANO\Desktop\res\resim\quince.PNG" />
-                                      <entry key="outputName" value="juego_terminado" />
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="imageAsset" value="E:\Users\FELICIANO\Desktop\res\res2\cuarentaytres_potencimetro.PNG" />
+                                      <entry key="outputName" value="wiki_cuarentaytres_potencimetro" />
                                     </map>
                                   </option>
                                 </PersistentState>

@@ -23,7 +23,52 @@ public class ActividadWiki extends AppCompatActivity {
     private ImageSwitcher switcher;
     TextView txtTitulo, txtContenido;
     private Wiki wiki;
-    private static final int[] IMAGES={R.mipmap.uno_led,R.mipmap.dos_capacitor,R.mipmap.tres_diodozener,R.mipmap.cuatro_diodo,R.mipmap.cinco_mosfet,R.mipmap.seis_transistor,R.mipmap.ocho_resistencia,R.mipmap.nueve_sensordetemperatura,R.mipmap.diez_dipswitch,R.mipmap.once_bobina,R.mipmap.doce_buzzer,R.mipmap.trece_multimetro,R.mipmap.catorce_servomotor,R.mipmap.quince_motor};
+    //private static final int[] IMAGES={R.mipmap.uno_led,R.mipmap.dos_capacitor,R.mipmap.tres_diodozener,R.mipmap.cuatro_diodo,R.mipmap.cinco_mosfet,R.mipmap.seis_transistor,R.mipmap.ocho_resistencia,R.mipmap.nueve_sensordetemperatura,R.mipmap.diez_dipswitch,R.mipmap.once_bobina,R.mipmap.doce_buzzer,R.mipmap.trece_multimetro,R.mipmap.catorce_servomotor,R.mipmap.quince_motor};
+    private static final int[] IMAGES={
+            R.mipmap.uno_led,
+            R.mipmap.wiki_dos_fuentedp,
+            R.mipmap.wiki_tres_cautin,
+            R.mipmap.wiki_cuatro_relevador,
+            R.mipmap.wiki_cinco_nano,
+            R.mipmap.wiki_seis_uno,
+            R.mipmap.wiki_siete_mega,
+            R.mipmap.wiki_ocho_proto,
+            R.mipmap.wiki_nueve_resistencias,
+            R.mipmap.wiki_diez_circuitoimp,
+            R.mipmap.wiki_once_integradocincocincocinco,
+            R.mipmap.wiki_doce_integradoimsietecuatrouno,
+            R.mipmap.wiki_trece_compuertaor,
+            R.mipmap.wiki_catorce_compuertanor,
+            R.mipmap.wiki_quince_compuertaand,
+            R.mipmap.wiki_dieciseis_compuertanand,
+            R.mipmap.wiki_diecisiete_compuertanot,
+            R.mipmap.wiki_dieciocho_compuertaxor,
+            R.mipmap.wiki_diecinueve_compuertaxnor,
+            R.mipmap.wiki_veinte_osciloscopio,
+            R.mipmap.wiki_veintiuno_estano,
+            R.mipmap.wiki_veintidos_tiptreintayuno,
+            R.mipmap.wiki_veintitres_tiptreintaydos,
+            R.mipmap.wiki_veinticuatro_bjt,
+            R.mipmap.wiki_veinticinco_plc,
+            R.mipmap.wiki_veintiseis_displaysietesegmentos,
+            R.mipmap.wiki_veintisiete_cablesdupont,
+            R.mipmap.wiki_veintiocho_cableutp,
+            R.mipmap.wiki_veintinueve_octoacopladores,
+            R.mipmap.wiki_treinta_sensordehumedad,
+            R.mipmap.wiki_treintayuno_sensordeproximidad,
+            R.mipmap.wiki_treintaydos_sensordehumo,
+            R.mipmap.wiki_treintaytres_sensorinfrarrojo,
+            R.mipmap.wiki_treintaycuatro_sensordecalor,
+            R.mipmap.wiki_treintaycinco_giroscopio,
+            R.mipmap.wiki_treintayseis_modulobluetooth,
+            R.mipmap.wiki_treintaysiete_sensordecolores,
+            R.mipmap.wiki_treintayocho_diodo,
+            R.mipmap.wiki_treintaynueve_diodozener,
+            R.mipmap.wiki_cuarenta_bobina,
+            R.mipmap.wiki_cuarentayuno_microcontrolador,
+            R.mipmap.wiki_cuarentaydos_foco,
+            R.mipmap.wiki_cuarentaytres_potencimetro};
+
     private int mPosition=-1;
     String val;
 
